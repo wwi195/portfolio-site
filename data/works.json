@@ -63,6 +63,24 @@
     "status": "公開中"
   },
   {
+    "id": "rezero2",
+    "title": "eリゼロ2 パチンコシミュレーター",
+    "description": "「Re:ゼロから始める異世界生活 season2」をテーマにしたパチンコの疑似遊技シミュレーター。",
+    "category": "パチンコ・スロット",
+    "tags": ["個人開発", "確率シミュレーション"],
+    "url": "https://wwi195.github.io/pachinko-simulator-rezero2/",
+    "status": "公開中"
+  },
+  {
+    "id": "okikai5",
+    "title": "沖海5夜桜超旋風 パチンコシミュレーター",
+    "description": "「スーパー海物語 IN 沖縄5 夜桜超旋風」をテーマにしたパチンコの疑似遊技シミュレーター。",
+    "category": "パチンコ・スロット",
+    "tags": ["個人開発", "確率シミュレーション"],
+    "url": "https://wwi195.github.io/pachinko-simulator-okikai5/",
+    "status": "公開中"
+  },
+  {
     "id": "bancho99",
     "title": "押忍!番長 漢の頂99ver. シミュレーター",
     "description": "「押忍!番長 漢の頂99ver.」をテーマにしたスロットの疑似遊技シミュレーター。",

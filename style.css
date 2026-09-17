@@ -436,3 +436,25 @@ h1 .accent {
   outline: none;
   border-color: var(--accent);
 }
+
+/* --- Notice box (Contact: 実装中 etc.) --- */
+.notice-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--surface);
+  border: 1px solid var(--surface-line);
+  border-radius: 8px;
+  padding: 20px 24px;
+  max-width: 480px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.notice-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--muted);
+  flex-shrink: 0;
+}

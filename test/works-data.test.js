@@ -4,8 +4,8 @@ import { readFileSync } from 'node:fs';
 
 const works = JSON.parse(readFileSync(new URL('../data/works.json', import.meta.url)));
 
-test('works.json には22件のデータがある', () => {
-  assert.equal(works.length, 22);
+test('works.json には24件のデータがある', () => {
+  assert.equal(works.length, 24);
 });
 
 test('全件が id, title, description, category, tags, url, status を持つ', () => {
