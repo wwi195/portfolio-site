@@ -21,7 +21,7 @@
     "id": "ghouldeka-analysis",
     "title": "e 東京喰種 超デカ超一撃ver. 長期収支分析ツール",
     "description": "グールデカ台の長期的な収支・出玉傾向を検証する分析ツール。",
-    "category": "パチンコ・スロット",
+    "category": "収支分析ツール",
     "tags": ["個人開発", "収支分析"],
     "url": "https://wwi195.github.io/pachinko-simulator-ghouldeka-analysis/",
     "status": "公開中"
@@ -138,7 +138,7 @@
     "id": "analysis-260901",
     "title": "全機種対応 長期収支検証ツール",
     "description": "保有する全10機種を機種選択式で切り替えて長期収支を検証する分析ツール。",
-    "category": "パチンコ・スロット",
+    "category": "収支分析ツール",
     "tags": ["個人開発", "収支分析"],
     "url": "https://wwi195.github.io/pachinko-simulator-analysis-260901/",
     "status": "公開中"

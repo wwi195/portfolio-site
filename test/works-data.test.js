@@ -22,8 +22,8 @@ test('id は重複しない', () => {
   assert.equal(new Set(ids).size, ids.length);
 });
 
-test('category は3種類のいずれか', () => {
-  const validCategories = ['パチンコ・スロット', 'シミュレーター', '日常ツール'];
+test('category は4種類のいずれか', () => {
+  const validCategories = ['パチンコ・スロット', '収支分析ツール', 'シミュレーター', '日常ツール'];
   for (const work of works) {
     assert.ok(validCategories.includes(work.category), `${work.id} の category が不正: ${work.category}`);
   }

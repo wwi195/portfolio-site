@@ -34,6 +34,6 @@ test('renderWorksHTML はデータが無いカテゴリのセクションを出�
   assert.doesNotMatch(html, /シミュレーター</);
 });
 
-test('CATEGORY_ORDER は3カテゴリを定義している', () => {
-  assert.deepEqual(CATEGORY_ORDER, ['パチンコ・スロット', 'シミュレーター', '日常ツール']);
+test('CATEGORY_ORDER は4カテゴリを定義している', () => {
+  assert.deepEqual(CATEGORY_ORDER, ['パチンコ・スロット', '収支分析ツール', 'シミュレーター', '日常ツール']);
 });

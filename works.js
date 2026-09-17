@@ -1,4 +1,4 @@
-export const CATEGORY_ORDER = ['パチンコ・スロット', 'シミュレーター', '日常ツール'];
+export const CATEGORY_ORDER = ['パチンコ・スロット', '収支分析ツール', 'シミュレーター', '日常ツール'];
 
 export function groupByCategory(works) {
   const grouped = {};
