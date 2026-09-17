@@ -144,6 +144,15 @@
     "status": "公開中"
   },
   {
+    "id": "garo7500-ghouldeka",
+    "title": "牙狼7500 グールデカ形式版 シミュレーター",
+    "description": "「牙狼7500」の確率ロジック・演出画像はそのままに、表示レイアウトをグールデカ形式に作り替えたパチンコの疑似遊技シミュレーター。",
+    "category": "パチンコ・スロット",
+    "tags": ["個人開発", "確率シミュレーション"],
+    "url": "https://wwi195.github.io/pachinko-simulator-garo/",
+    "status": "公開中"
+  },
+  {
     "id": "okidoki",
     "title": "沖ドキ シミュレーター",
     "description": "沖ドキシリーズをテーマにしたスロットの疑似遊技シミュレーター。",
