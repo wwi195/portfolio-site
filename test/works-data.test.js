@@ -17,6 +17,17 @@ test('全件が id, title, description, category, tags, url, status を持つ', 
   }
 });
 
+test('全件が details.background / commitment / fun を空でない文字列として持つ', () => {
+  const detailFields = ['background', 'commitment', 'fun'];
+  for (const work of works) {
+    assert.ok(work.details, `${work.id} に details が無い`);
+    for (const field of detailFields) {
+      assert.equal(typeof work.details[field], 'string', `${work.id} の details.${field} が文字列でない`);
+      assert.ok(work.details[field].length > 0, `${work.id} の details.${field} が空`);
+    }
+  }
+});
+
 test('id は重複しない', () => {
   const ids = works.map((w) => w.id);
   assert.equal(new Set(ids).size, ids.length);
