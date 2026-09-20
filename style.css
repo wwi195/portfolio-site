@@ -359,6 +359,50 @@ h1 .accent {
   padding: 3px 10px;
 }
 
+/* --- Genre list (Works top) --- */
+.genre-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.genre-card {
+  display: block;
+  background: var(--surface);
+  border: 1px solid var(--surface-line);
+  border-radius: 8px;
+  padding: 24px;
+  text-decoration: none;
+  color: var(--text);
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.genre-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+}
+
+.genre-card h3 {
+  font-family: 'Sora', sans-serif;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.genre-card p {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+.genre-count {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  border: 1px solid var(--surface-line);
+  border-radius: 20px;
+  padding: 3px 10px;
+}
+
 /* --- Detail page --- */
 .detail-page .work-category-label {
   font-family: 'JetBrains Mono', monospace;
