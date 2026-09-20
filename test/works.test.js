@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { groupByCategory, renderWorkCard, renderWorksHTML, CATEGORY_ORDER, GENRES, renderGenreCard, renderGenreListHTML } from '../works.js';
+import { groupByCategory, renderWorkCard, renderWorksHTML, CATEGORY_ORDER, GENRES, renderGenreCard, renderGenreListHTML, renderGenreWorksHTML } from '../works.js';
 
 const sampleWorks = [
   { id: 'a', title: 'A', description: 'desc-a', category: 'パチンコ・スロット', tags: ['tag1'], url: 'https://example.com/a', status: '公開中' },
@@ -63,4 +63,24 @@ test('renderGenreListHTML はGENRESの順に4枚のジャンルカードを出�
   assert.ok(pachinkoIndex < dailytoolIndex, 'GENRES通りパチンコ・スロットが先に出るべき');
   const cardCount = (html.match(/class="genre-card"/g) ?? []).length;
   assert.equal(cardCount, 4);
+});
+
+test('renderGenreWorksHTML は該当ジャンルの作品のみを含むグリッドを返す', () => {
+  const genres = [
+    { slug: 'pachinko', category: 'パチンコ・スロット', label: 'パチンコ・スロット', blurb: 'ダミー' },
+    { slug: 'dailytool', category: '日常ツール', label: '日常ツール', blurb: 'ダミー' },
+  ];
+  const html = renderGenreWorksHTML('pachinko', sampleWorks, genres);
+  assert.match(html, /パチンコ・スロット/);
+  assert.match(html, /href="detail\.html\?id=a"/);
+  assert.match(html, /href="detail\.html\?id=c"/);
+  assert.doesNotMatch(html, /href="detail\.html\?id=b"/);
+  assert.match(html, /href="works\.html">/);
+});
+
+test('renderGenreWorksHTML は存在しないジャンルに対してnullを返す', () => {
+  const genres = [
+    { slug: 'pachinko', category: 'パチンコ・スロット', label: 'パチンコ・スロット', blurb: 'ダミー' },
+  ];
+  assert.equal(renderGenreWorksHTML('not-exist', sampleWorks, genres), null);
 });

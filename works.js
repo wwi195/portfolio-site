@@ -39,6 +39,19 @@ export function renderGenreListHTML(works, genres = GENRES) {
   `;
 }
 
+export function renderGenreWorksHTML(genreSlug, works, genres = GENRES) {
+  const genre = genres.find((g) => g.slug === genreSlug);
+  if (!genre) return null;
+  const grouped = groupByCategory(works);
+  const matched = grouped[genre.category] ?? [];
+  return `
+    <h1>${genre.label}</h1>
+    <p class="page-lede">${genre.blurb}</p>
+    <a class="back-link" href="works.html">← すべてのジャンルを見る</a>
+    <div class="work-grid">${matched.map(renderWorkCard).join('')}</div>
+  `;
+}
+
 export function renderWorkCard(work) {
   const tags = work.tags.map((tag) => `<span class="tag">${tag}</span>`).join('');
   return `
