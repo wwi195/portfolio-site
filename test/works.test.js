@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { groupByCategory, renderWorkCard, renderWorksHTML, CATEGORY_ORDER, GENRES, renderGenreCard, renderGenreListHTML, renderGenreWorksHTML } from '../works.js';
+import { groupByCategory, renderWorkCard, CATEGORY_ORDER, GENRES, renderGenreCard, renderGenreListHTML, renderGenreWorksHTML } from '../works.js';
 
 const sampleWorks = [
   { id: 'a', title: 'A', description: 'desc-a', category: 'パチンコ・スロット', tags: ['tag1'], url: 'https://example.com/a', status: '公開中' },
@@ -19,19 +19,6 @@ test('renderWorkCard は id へのリンクとタイトル・タグを含む', (
   assert.match(html, /href="detail\.html\?id=a"/);
   assert.match(html, /A/);
   assert.match(html, /tag1/);
-});
-
-test('renderWorksHTML は CATEGORY_ORDER の順にセクションを並べる', () => {
-  const html = renderWorksHTML(sampleWorks);
-  const scrollIndex = html.indexOf('パチンコ・スロット');
-  const toolIndex = html.indexOf('日常ツール');
-  assert.ok(scrollIndex >= 0 && toolIndex >= 0);
-  assert.ok(scrollIndex < toolIndex, 'CATEGORY_ORDER 通りパチンコ・スロットが先に出るべき');
-});
-
-test('renderWorksHTML はデータが無いカテゴリのセクションを出力しない', () => {
-  const html = renderWorksHTML(sampleWorks);
-  assert.doesNotMatch(html, /シミュレーター</);
 });
 
 test('CATEGORY_ORDER は4カテゴリを定義している', () => {

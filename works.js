@@ -63,25 +63,16 @@ export function renderWorkCard(work) {
   `;
 }
 
-export function renderWorksHTML(works) {
-  const grouped = groupByCategory(works);
-  return CATEGORY_ORDER.filter((category) => grouped[category])
-    .map((category) => `
-      <section class="work-category">
-        <h2>${category}</h2>
-        <div class="work-grid">${grouped[category].map(renderWorkCard).join('')}</div>
-      </section>
-    `)
-    .join('');
-}
-
 async function init() {
   const container = document.getElementById('works-container');
   if (!container) return;
   try {
     const res = await fetch('data/works.json');
     const works = await res.json();
-    container.innerHTML = renderWorksHTML(works);
+    const params = new URLSearchParams(window.location.search);
+    const genreSlug = params.get('genre');
+    const genreHTML = genreSlug ? renderGenreWorksHTML(genreSlug, works) : null;
+    container.innerHTML = genreHTML ?? renderGenreListHTML(works);
   } catch (err) {
     container.innerHTML = '<p class="page-lede">作品データの読み込みに失敗しました。</p>';
   }
