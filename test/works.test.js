@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { groupByCategory, renderWorkCard, renderWorksHTML, CATEGORY_ORDER, GENRES, renderGenreCard } from '../works.js';
+import { groupByCategory, renderWorkCard, renderWorksHTML, CATEGORY_ORDER, GENRES, renderGenreCard, renderGenreListHTML } from '../works.js';
 
 const sampleWorks = [
   { id: 'a', title: 'A', description: 'desc-a', category: 'パチンコ・スロット', tags: ['tag1'], url: 'https://example.com/a', status: '公開中' },
@@ -53,4 +53,14 @@ test('renderGenreCard はジャンル名・件数・リンク先を含む', () =
   assert.match(html, /href="works\.html\?genre=pachinko"/);
   assert.match(html, /パチンコ・スロット/);
   assert.match(html, />2件</);
+});
+
+test('renderGenreListHTML はGENRESの順に4枚のジャンルカードを出力する', () => {
+  const html = renderGenreListHTML(sampleWorks, GENRES);
+  const pachinkoIndex = html.indexOf('パチンコ・スロット');
+  const dailytoolIndex = html.indexOf('日常ツール');
+  assert.ok(pachinkoIndex >= 0 && dailytoolIndex >= 0);
+  assert.ok(pachinkoIndex < dailytoolIndex, 'GENRES通りパチンコ・スロットが先に出るべき');
+  const cardCount = (html.match(/class="genre-card"/g) ?? []).length;
+  assert.equal(cardCount, 4);
 });

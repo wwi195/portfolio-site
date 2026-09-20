@@ -30,6 +30,15 @@ export function renderGenreCard(genre, works) {
   `;
 }
 
+export function renderGenreListHTML(works, genres = GENRES) {
+  const cards = genres.map((genre) => renderGenreCard(genre, works)).join('');
+  return `
+    <h1>Works</h1>
+    <p class="page-lede">ジャンルを選んで作品を見る。</p>
+    <div class="genre-grid">${cards}</div>
+  `;
+}
+
 export function renderWorkCard(work) {
   const tags = work.tags.map((tag) => `<span class="tag">${tag}</span>`).join('');
   return `
