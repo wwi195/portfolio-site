@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { groupByCategory, renderWorkCard, renderWorksHTML, CATEGORY_ORDER } from '../works.js';
+import { groupByCategory, renderWorkCard, renderWorksHTML, CATEGORY_ORDER, GENRES, renderGenreCard } from '../works.js';
 
 const sampleWorks = [
   { id: 'a', title: 'A', description: 'desc-a', category: 'パチンコ・スロット', tags: ['tag1'], url: 'https://example.com/a', status: '公開中' },
@@ -36,4 +36,21 @@ test('renderWorksHTML はデータが無いカテゴリのセクションを出�
 
 test('CATEGORY_ORDER は4カテゴリを定義している', () => {
   assert.deepEqual(CATEGORY_ORDER, ['パチンコ・スロット', '収支分析ツール', 'シミュレーター', '日常ツール']);
+});
+
+test('GENRES は4ジャンルをCATEGORY_ORDERの順で定義している', () => {
+  assert.deepEqual(GENRES.map((g) => g.category), CATEGORY_ORDER);
+  for (const genre of GENRES) {
+    assert.equal(typeof genre.slug, 'string');
+    assert.equal(typeof genre.label, 'string');
+    assert.equal(typeof genre.blurb, 'string');
+  }
+});
+
+test('renderGenreCard はジャンル名・件数・リンク先を含む', () => {
+  const genre = { slug: 'pachinko', category: 'パチンコ・スロット', label: 'パチンコ・スロット', blurb: 'ダミー説明' };
+  const html = renderGenreCard(genre, sampleWorks);
+  assert.match(html, /href="works\.html\?genre=pachinko"/);
+  assert.match(html, /パチンコ・スロット/);
+  assert.match(html, />2件</);
 });

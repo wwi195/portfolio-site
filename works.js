@@ -1,5 +1,12 @@
 export const CATEGORY_ORDER = ['パチンコ・スロット', '収支分析ツール', 'シミュレーター', '日常ツール'];
 
+export const GENRES = [
+  { slug: 'pachinko', category: 'パチンコ・スロット', label: 'パチンコ・スロット', blurb: '実機の確率・演出をWebで再現した、無料で遊べるパチンコ・スロットシミュレーター集。' },
+  { slug: 'analysis', category: '収支分析ツール', label: '収支分析ツール', blurb: '演出を省き、長期的な収支・出玉傾向だけを検証する分析特化ツール。' },
+  { slug: 'simulator', category: 'シミュレーター', label: 'シミュレーター', blurb: '競馬やダイエットなど、日常の意思決定を数値でシミュレーションするツール集。' },
+  { slug: 'dailytool', category: '日常ツール', label: '日常ツール', blurb: '体調管理や価格比較など、日々の暮らしをちょっと便利にするツール集。' },
+];
+
 export function groupByCategory(works) {
   const grouped = {};
   for (const work of works) {
@@ -9,6 +16,18 @@ export function groupByCategory(works) {
     grouped[work.category].push(work);
   }
   return grouped;
+}
+
+export function renderGenreCard(genre, works) {
+  const grouped = groupByCategory(works);
+  const count = (grouped[genre.category] ?? []).length;
+  return `
+    <a class="genre-card" href="works.html?genre=${genre.slug}">
+      <h3>${genre.label}</h3>
+      <p>${genre.blurb}</p>
+      <span class="genre-count">${count}件</span>
+    </a>
+  `;
 }
 
 export function renderWorkCard(work) {
